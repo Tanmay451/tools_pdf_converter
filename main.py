@@ -3,6 +3,10 @@
 
 
 from fpdf import FPDF 
+import glob
+
+# file name in array
+file_path = glob.glob("./code_file/*")
 
 # save FPDF() class into 
 # a variable pdf 
@@ -16,11 +20,12 @@ pdf.add_page()
 pdf.set_font("Arial", size = 15) 
 
 # open the text file in read mode 
-f = open("myfile.txt", "r") 
+for f in file_path:
+	f = open(f, "r") 
 
-# insert the texts in pdf 
-for x in f: 
-	pdf.cell(200, 10, txt = x, ln = 1, align = 'C') 
+	# insert the texts in pdf 
+	for x in f: 
+		pdf.cell(200, 10, txt = x, ln = 1, align = 'C') 
 
-# save the pdf with name .pdf 
-pdf.output("tanmay.pdf") 
+	# save the pdf with name .pdf 
+	pdf.output("tanmay.pdf") 
