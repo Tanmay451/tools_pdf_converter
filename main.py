@@ -1,12 +1,11 @@
-# Python program to create 
-# a pdf file 
+# Python program to convert 
+# text file to pdf file 
 
 
 from fpdf import FPDF 
 
-
-# save FPDF() class into a 
-# variable pdf 
+# save FPDF() class into 
+# a variable pdf 
 pdf = FPDF() 
 
 # Add a page 
@@ -16,13 +15,12 @@ pdf.add_page()
 # that you want in the pdf 
 pdf.set_font("Arial", size = 15) 
 
-# create a cell 
-pdf.cell(200, 10, txt = "Tanmay", 
-		ln = 1, align = 'C') 
+# open the text file in read mode 
+f = open("myfile.txt", "r") 
 
-# add another cell 
-pdf.cell(200, 10, txt = "Piyush Kaushik", 
-		ln = 2, align = 'C') 
+# insert the texts in pdf 
+for x in f: 
+	pdf.cell(200, 10, txt = x, ln = 1, align = 'C') 
 
 # save the pdf with name .pdf 
 pdf.output("tanmay.pdf") 
