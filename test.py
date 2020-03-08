@@ -15,7 +15,7 @@ class PDF(FPDF):
         # Move to the right
         self.cell(80)
         # Framed title
-        self.cell(30, 10, f[1:], 'C')
+        self.cell(30, 10, files)
         # Line break
         self.ln(20)
 
@@ -23,7 +23,7 @@ pdf = PDF()
 
 file_path = []
 
-for root, dirs, files in os.walk("./code_file"):
+for root, dirs, files in os.walk("/home/tutree/work123/jan9/application-server/services"):
     for file in files:
         if file.endswith(""):
              file_path.append(os.path.join(root, file))
@@ -33,9 +33,8 @@ for root, dirs, files in os.walk("./code_file"):
 
 for files in file_path: 
     prg_file = open(files)
-    for f in prg_file:
-        pdf.add_page()
-        break
+    
+    pdf.add_page()
     
     
     for f in prg_file:
@@ -52,11 +51,10 @@ for files in file_path:
                 print("Its comment          ",f)
         else:
             if (len(f) != 1):
-                f = ">>>    "+f
                 pdf.set_text_color(0,0,0)
                 pdf.set_font("Arial", size=8)
-                pdf.cell(200, 6, txt=f, ln=1)
+                pdf.cell(200, 3, txt=f, ln=1)
                 print("Its code             ",f)
 
-pdf.output("simple_demo.pdf")      
+pdf.output("./output"+"/services.pdf")      
     
