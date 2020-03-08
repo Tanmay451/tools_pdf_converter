@@ -26,7 +26,7 @@ for f in file_path:
 
 	# insert the texts in pdf 
 	for x in f: 
-		pdf.cell(200, 10, txt = x, ln = 1, align = 'C') 
+		pdf.cell(200, 10, txt = x, ln = 1) 
 
 	# save the pdf with name .pdf 
 pdf.output("tanmay.pdf") 
