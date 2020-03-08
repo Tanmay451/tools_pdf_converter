@@ -1,6 +1,7 @@
 import os
 from fpdf import FPDF
-
+# https://pyfpdf.readthedocs.io/en/latest/reference/set_link/index.html
+# https://pyfpdf.readthedocs.io/en/latest/reference/header/index.html
 # fpdf.add_link()
 pdf = FPDF()
 
@@ -22,11 +23,12 @@ pdf = PDF()
 
 file_path = []
 
-if not os.path.exists('code_file'):
-	os.make_dirs('code_file')
-for dir in os.listdir('code_file'):
-	file = './code_file/' + dir
-	file_path.append(file)
+for root, dirs, files in os.walk("./code_file"):
+    for file in files:
+        if file.endswith(""):
+             file_path.append(os.path.join(root, file))
+             print(os.path.join(root, file))
+
 
 
 for files in file_path: 
